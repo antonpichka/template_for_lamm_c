@@ -1,5 +1,5 @@
-## New.Build.Run console|winforms program
+## Project setup
 
-- dotnet new console/winforms
+- dotnet new console|winforms
 - dotnet build
 - dotnet run
