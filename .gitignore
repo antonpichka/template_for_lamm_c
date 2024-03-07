@@ -75,6 +75,10 @@ spdlogConfigVersion.cmake
 compile_commands.json
 
 # idea
+bin
+obj
+.fleet/
+.cache/
 .idea/
 .cache/
 .vscode/
