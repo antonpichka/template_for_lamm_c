@@ -1,4 +1,4 @@
-namespace template_for_lamm_c;
+namespace template_for_lamm_c_sharp;
 
 static class Program
 {
