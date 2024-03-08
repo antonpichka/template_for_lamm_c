@@ -7,7 +7,7 @@
 - build_run_bat.bat:
 - - "project=${name_of_your_catalog}":
 - Commands cmd:
-- - start /b build_run_bat.bat
+- - start /min build_run_bat.bat
 - - taskkill /f /im dotnet.exe
 - - taskkill /f /im cmd.exe
 - Commands PowerShell:
