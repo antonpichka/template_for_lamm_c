@@ -8,10 +8,13 @@
 - - "project=${name_of_your_catalog}":
 - Commands cmd:
 - - start /b build_run_bat.bat
+- - taskkill /f /im dotnet.exe
+- - taskkill /f /im cmd.exe
 - Commands PowerShell:
 - - Start-Process -FilePath "build_run_bat.bat" -WindowStyle Hidden
+- - taskkill /f /im dotnet.exe
+- - taskkill /f /im cmd.exe
 
 ## Note
 
-"dotnet" which is a compiler and more. It cannot completely build a project when the files are not in the same directory, so I had to use method the one used above.
-Maybe I'm stupid and don't understand how to build an entire project using "dotnet" alone, without resorting to .bat and other cmd commands.
+- "dotnet" which is a compiler and more. It cannot completely build a project when the files are not in the same directory, so I had to use method the one used above. Maybe I'm stupid and don't understand how to build an entire project using "dotnet" alone, without resorting to .bat and other cmd commands.
