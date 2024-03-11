@@ -4,8 +4,8 @@
 
 ### Windows
 
-- build_run_bat.bat:
-- - "project=${name_of_your_catalog}":
+- build_w_run_project_bat.bat:
+- - set "project=${name_of_your_catalog}":
 - Commands cmd:
 - - start /min build_w_run_project_bat.bat
 - - taskkill /f /im dotnet.exe
