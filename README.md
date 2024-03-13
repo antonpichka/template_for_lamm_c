@@ -1,3 +1,11 @@
+- https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#architectural-objects
+- https://github.com/antonpichka/library_architecture_mvvm_modify_c_sharp/blob/main/example/Program.cs
+- https://github.com/antonpichka/library_architecture_mvvm_modify/labels
+
+---
+
+- After setup. Everything after this message can be deleted. Even the message itself
+
 ## Project setup
 
 - If you need to change the catalog name from "template_for_lamm_c_sharp" to "${name_of_your_catalog}"
@@ -15,6 +23,6 @@
 - - taskkill /f /im dotnet.exe
 - - taskkill /f /im cmd.exe
 
-## Note
+### Note
 
 - "dotnet" which is a compiler and more. It cannot completely build a project when the files are not in the same directory, so I had to use method the one used above. Maybe I'm stupid and don't understand how to build an entire project using "dotnet" alone, without resorting to .bat and other cmd commands.
