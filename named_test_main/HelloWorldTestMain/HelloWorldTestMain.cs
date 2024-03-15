@@ -6,5 +6,8 @@ public class HelloWorldTestMain
 {
     public static void Main(string[] args) 
     {
+        // EXPECTED OUTPUT:
+        //
+        //
     }
 }    
