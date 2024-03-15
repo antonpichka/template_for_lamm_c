@@ -1,5 +1,5 @@
 - https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#architectural-objects
-- https://github.com/antonpichka/library_architecture_mvvm_modify_c_sharp/blob/main/example/Program.cs
+- https://github.com/antonpichka/library_architecture_mvvm_modify_c_sharp/blob/main/example/Example.cs
 - https://github.com/antonpichka/library_architecture_mvvm_modify/labels
 
 ---
@@ -13,13 +13,23 @@
 ### Windows
 
 - build_w_run_project_bat.bat:
-- - set "project=${name_of_your_catalog}":
+- - set "project=${name_of_your_catalog}"
+- build_project_bat.bat:
+- - set "project=${name_of_your_catalog}"
 - Commands cmd:
 - - start /min build_w_run_project_bat.bat
 - - taskkill /f /im dotnet.exe
 - - taskkill /f /im cmd.exe
 - Commands PowerShell:
 - - Start-Process -FilePath "build_w_run_project_bat.bat" -WindowStyle Hidden
+- - taskkill /f /im dotnet.exe
+- - taskkill /f /im cmd.exe
+- Commands cmd (Only Build):
+- - start /min build_project_bat.bat
+- - taskkill /f /im dotnet.exe
+- - taskkill /f /im cmd.exe
+- Commands PowerShell (Only Build):
+- - Start-Process -FilePath "build_project_bat.bat" -WindowStyle Hidden
 - - taskkill /f /im dotnet.exe
 - - taskkill /f /im cmd.exe
 
