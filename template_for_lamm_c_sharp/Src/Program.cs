@@ -6,8 +6,6 @@ public static class Program
     public static void Main()
     {
         var app = new AppView();
-
-        app.InitializeComponent();
         app.Run();
     }
 }

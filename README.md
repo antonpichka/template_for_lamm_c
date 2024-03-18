@@ -21,7 +21,7 @@
 - - taskkill /f /im dotnet.exe
 - - taskkill /f /im cmd.exe
 - Commands PowerShell:
-- - Start-Process -FilePath "build_w_run_project_bat.bat" -WindowStyle Hidden
+- - Start-Process -FilePath "build_w_run_project_bat.bat"
 - - taskkill /f /im dotnet.exe
 - - taskkill /f /im cmd.exe
 - Commands cmd (Only Build):
@@ -29,7 +29,7 @@
 - - taskkill /f /im dotnet.exe
 - - taskkill /f /im cmd.exe
 - Commands PowerShell (Only Build):
-- - Start-Process -FilePath "build_project_bat.bat" -WindowStyle Hidden
+- - Start-Process -FilePath "build_project_bat.bat"
 - - taskkill /f /im dotnet.exe
 - - taskkill /f /im cmd.exe
 

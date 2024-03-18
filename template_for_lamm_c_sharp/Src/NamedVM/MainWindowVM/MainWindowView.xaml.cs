@@ -1,21 +1,9 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using library_architecture_mvvm_modify_c_sharp;
 
 namespace template_for_lamm_c_sharp;
 
-/// <summary>
-/// Interaction logic for MainWindowView.xaml
-/// </summary>
-public partial class MainWindowView : Window
+public sealed partial class MainWindowView : Window
 {
     /// RELEASE CODE
     // private readonly MainWindowViewModel viewModel;
@@ -24,6 +12,7 @@ public partial class MainWindowView : Window
 
     public MainWindowView()
     {
+        InitializeComponent();
         /// RELEASE CODE
         // viewModel = new MainWindowViewModel();
         /// TEST CODE
@@ -49,6 +38,17 @@ public partial class MainWindowView : Window
     
     private void BuildParameterViewModel() 
     {
+        new LocalException(this,EnumGuilty.developer,"qww");
+        new LocalException(this,EnumGuilty.developer,"qww");
+        new LocalException(this,EnumGuilty.developer,"qww");
+        new LocalException(this,EnumGuilty.developer,"qww");
+        new LocalException(this,EnumGuilty.developer,"qww");
+        new LocalException(this,EnumGuilty.developer,"qww");
+        new LocalException(this,EnumGuilty.developer,"qww");
+        new LocalException(this,EnumGuilty.developer,"qww");
+        new LocalException(this,EnumGuilty.developer,"qww");
+        new LocalException(this,EnumGuilty.developer,"qww");
+        new LocalException(this,EnumGuilty.developer,"qww");
         var dataForNamedParameterNamedStreamWState = viewModel.GetDataForNamedParameterNamedStreamWState();
         switch(dataForNamedParameterNamedStreamWState.GetEnumDataForNamed()) 
         {

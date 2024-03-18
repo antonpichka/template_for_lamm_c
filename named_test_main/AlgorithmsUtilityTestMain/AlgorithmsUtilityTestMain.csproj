@@ -11,4 +11,8 @@
     <Reference Include="C:\Developer\Projects\template_for_lamm_c_sharp\SomeOtherOutputPath\Debug\net8.0-windows\template_for_lamm_c_sharp.dll" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="library_architecture_mvvm_modify_c_sharp" Version="1.0.0" />
+  </ItemGroup>
+
 </Project>
