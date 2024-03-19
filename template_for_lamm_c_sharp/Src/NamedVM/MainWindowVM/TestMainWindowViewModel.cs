@@ -13,7 +13,7 @@ public sealed class TestMainWindowViewModel : BaseNamedViewModel<DataForMainWind
 
     public override async Task<string> Init()
     {
-        await Task.Delay(1);
+        await Task.Delay(2000);
         GetDataForNamedParameterNamedStreamWState().isLoading = false;
         return KeysSuccessUtility.sUCCESS;
     }

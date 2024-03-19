@@ -13,16 +13,16 @@ public sealed class ConsoleWindowView : Window
 
     public ConsoleWindowView()
     {
-        Init();
-        AdditionalInitialization();
-        Build();
+        InitParametersFour();
+        AdditionalInitParameterTextBlockLog();
+        BuildParametersFour();
     }
 
-    private void Init() 
+    private void InitParametersFour() 
     {
         Title = "LOG";
         Height = 450;
-        Width = 800;
+        Width = 600;
         grid = new();
         scrollViewerWTextBlockLog = new();
         textBlockLog = new()
@@ -31,20 +31,24 @@ public sealed class ConsoleWindowView : Window
             Background = new SolidColorBrush(Colors.Black),
             FontSize = 16.0,
         };
-        buttonLog = new();
+        buttonLog = new() 
+        {
+            Content = "Clear",
+        };
+        buttonLog.Click += ClickButtonLog;
     }
 
-    private void AdditionalInitialization() 
+    private void AdditionalInitParameterTextBlockLog() 
     {
         Console.SetOut(new TextBlockWriterUtility(textBlockLog!));
     }
 
-    private void Build() 
+    private void BuildParametersFour() 
     {
         scrollViewerWTextBlockLog!.Content = textBlockLog;
         grid!.ColumnDefinitions.Add(new ColumnDefinition());
         grid.RowDefinitions.Add(new RowDefinition() {
-            Height = new GridLength(2,GridUnitType.Star)
+            Height = new GridLength(10,GridUnitType.Star)
         });
         grid.RowDefinitions.Add(new RowDefinition());
         Grid.SetRow(scrollViewerWTextBlockLog, 0);
@@ -52,5 +56,14 @@ public sealed class ConsoleWindowView : Window
         Grid.SetRow(buttonLog, 1);
         grid.Children.Add(buttonLog);
         Content = grid;
+    }
+
+    private void ClickButtonLog(object sender, RoutedEventArgs e) 
+    {
+        if(textBlockLog?.Text == "") 
+        {
+            return;
+        }
+        textBlockLog!.Text = "";
     }
 }

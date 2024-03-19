@@ -4,19 +4,21 @@ namespace template_for_lamm_c_sharp;
 
 public sealed class AppView : Application
 {
-    private MainWindowView? mainWindowView;
+    /* ONLY EDIT THIS LINE IF YOU WILL MAKE A RELEASE */
     private readonly bool isBuildRelease = false;
+    /* ONLY EDIT THIS LINE IF YOU WILL MAKE A RELEASE */
+    private MainWindowView? mainWindowView;
 
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
         if(isBuildRelease) 
         {
-            var mainWindowView = new MainWindowView();
+            MainWindowView mainWindowView = new();
             mainWindowView.Show();
             return;
         }
-        var consoleWindowView = new ConsoleWindowView();
+        ConsoleWindowView consoleWindowView = new();
         consoleWindowView.Show();
         return;
     }

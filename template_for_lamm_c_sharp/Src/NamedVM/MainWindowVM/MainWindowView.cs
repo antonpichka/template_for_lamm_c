@@ -1,4 +1,7 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Shapes;
 using library_architecture_mvvm_modify_c_sharp;
 
 namespace template_for_lamm_c_sharp;
@@ -12,16 +15,25 @@ public sealed class MainWindowView : Window
 
     public MainWindowView()
     {
+        InitBuild();
         /// RELEASE CODE
         // viewModel = new MainWindowViewModel();
         /// TEST CODE
         viewModel = new TestMainWindowViewModel();
         InitParameterViewModel();
+        BuildParameterViewModel();
     }
     
     public void DisposeParameterViewModel() 
     {
         viewModel.Dispose();
+    }
+
+    private void InitBuild() 
+    {
+        Title = "ExampleBlyad";
+        Height = 600;
+        Width = 800;
     }
 
     private async void InitParameterViewModel() 
@@ -37,28 +49,36 @@ public sealed class MainWindowView : Window
     
     private void BuildParameterViewModel() 
     {
-        new LocalException(this,EnumGuilty.developer,"qww");
-        new LocalException(this,EnumGuilty.developer,"qww");
-        new LocalException(this,EnumGuilty.developer,"qww");
-        new LocalException(this,EnumGuilty.developer,"qww");
-        new LocalException(this,EnumGuilty.developer,"qww");
-        new LocalException(this,EnumGuilty.developer,"qww");
-        new LocalException(this,EnumGuilty.developer,"qww");
-        new LocalException(this,EnumGuilty.developer,"qww");
-        new LocalException(this,EnumGuilty.developer,"qww");
-        new LocalException(this,EnumGuilty.developer,"qww");
-        new LocalException(this,EnumGuilty.developer,"qww");
         var dataForNamedParameterNamedStreamWState = viewModel.GetDataForNamedParameterNamedStreamWState();
         switch(dataForNamedParameterNamedStreamWState.GetEnumDataForNamed()) 
         {
             case EnumDataForMainWindowView.isLoading:
-                Utility.DebugPrint("Build: IsLoading");
+                Grid gridWIsLoading = new();
+                gridWIsLoading.Children.Add(new Ellipse() {
+                    Width = 50,
+                    Height = 50,
+                    Fill = new SolidColorBrush(Colors.Black),
+                    VerticalAlignment = VerticalAlignment.Center
+                });
+                Content = gridWIsLoading;
                 break;
             case EnumDataForMainWindowView.exception:
-                Utility.DebugPrint($"Build: Exception({dataForNamedParameterNamedStreamWState.exceptionController.GetKeyParameterException()})");
+                Grid gridWException = new();
+                gridWException.Children.Add(new TextBlock() {
+                    Text = dataForNamedParameterNamedStreamWState.exceptionController.GetKeyParameterException(),
+                    FontSize = 16.0,
+                    Foreground = new SolidColorBrush(Colors.Black)
+                });
+                Content = gridWException;
                 break;
             case EnumDataForMainWindowView.success:
-                Utility.DebugPrint($"Build: Success({dataForNamedParameterNamedStreamWState.isLoading})");
+                Grid gridWSuccess = new();
+                gridWSuccess.Children.Add(new TextBlock() {
+                    Text = "Success",
+                    FontSize = 16.0,
+                    Foreground = new SolidColorBrush(Colors.Black)
+                });
+                Content = gridWSuccess;
                 break;
             default:
                 break;            
