@@ -15,7 +15,7 @@ public sealed class MainWindowView : Window
 
     public MainWindowView()
     {
-        InitBuild();
+        InitBuildWhereWindow();
         /// RELEASE CODE
         // viewModel = new MainWindowViewModel();
         /// TEST CODE
@@ -29,7 +29,7 @@ public sealed class MainWindowView : Window
         viewModel.Dispose();
     }
 
-    private void InitBuild() 
+    private void InitBuildWhereWindow() 
     {
         Title = "ExampleBlyad";
         Height = 600;

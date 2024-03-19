@@ -35,7 +35,7 @@ public sealed class ConsoleWindowView : Window
         {
             Content = "Clear",
         };
-        buttonLog.Click += ClickButtonLog;
+        buttonLog.Click += ClickButtonLogParameterTextBlockLog;
     }
 
     private void AdditionalInitParameterTextBlockLog() 
@@ -58,7 +58,7 @@ public sealed class ConsoleWindowView : Window
         Content = grid;
     }
 
-    private void ClickButtonLog(object sender, RoutedEventArgs e) 
+    private void ClickButtonLogParameterTextBlockLog(object sender, RoutedEventArgs e) 
     {
         if(textBlockLog?.Text == "") 
         {

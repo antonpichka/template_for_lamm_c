@@ -14,11 +14,6 @@ public sealed class TextBlockWriterUtility(TextBlock textBlock) : TextWriter
     public override void WriteLine(string value)
 #pragma warning restore CS8765
     {
-        if(AlgorithmsUtility.IsWhereEqualsStartExceptionFromStr(value))
-        {
-            textBlock.Text += value + Environment.NewLine;
-            return;
-        }
         textBlock.Text += value + Environment.NewLine;
     }
 }
