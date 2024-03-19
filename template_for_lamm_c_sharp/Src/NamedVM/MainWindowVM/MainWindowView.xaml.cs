@@ -3,7 +3,7 @@ using library_architecture_mvvm_modify_c_sharp;
 
 namespace template_for_lamm_c_sharp;
 
-public sealed partial class MainWindowView : Window
+public sealed class MainWindowView : Window
 {
     /// RELEASE CODE
     // private readonly MainWindowViewModel viewModel;
@@ -12,7 +12,6 @@ public sealed partial class MainWindowView : Window
 
     public MainWindowView()
     {
-        InitializeComponent();
         /// RELEASE CODE
         // viewModel = new MainWindowViewModel();
         /// TEST CODE

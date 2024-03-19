@@ -2,32 +2,29 @@
 
 namespace template_for_lamm_c_sharp;
 
-public sealed partial class AppView : Application
+public sealed class AppView : Application
 {
     private MainWindowView? mainWindowView;
-    private readonly bool isRelease = false;
-    
-    public AppView()
-    {
-        InitializeComponent();
-    }
+    private readonly bool isBuildRelease = false;
 
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
-        if(isRelease) 
+        if(isBuildRelease) 
         {
-            StartupUri = new Uri("MainWindowView.xaml",UriKind.Relative);
+            var mainWindowView = new MainWindowView();
+            mainWindowView.Show();
             return;
         }
-        StartupUri = new Uri("ConsoleWindowView.xaml",UriKind.Relative);
+        var consoleWindowView = new ConsoleWindowView();
+        consoleWindowView.Show();
         return;
     }
 
     protected override void OnActivated(EventArgs e)
     {
         base.OnActivated(e);
-        if(isRelease) 
+        if(isBuildRelease) 
         {
             return;
         }

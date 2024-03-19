@@ -5,7 +5,7 @@ public static class Program
     [STAThread]
     public static void Main()
     {
-        var app = new AppView();
-        app.Run();
+        var appView = new AppView();
+        appView.Run();
     }
 }
