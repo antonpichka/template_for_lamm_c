@@ -9,6 +9,13 @@
 ## Project setup
 
 - If you need to change the catalog name from "template_for_lamm_c_sharp" to "${name_of_your_catalog}"
+- Change your project's dependency path in "named_test_main\AlgorithmsUtilityTestMain\AlgorithmsUtilityTestMain.csproj":
+```
+<ItemGroup>
+    <Reference Include="C:\Developer\Projects\template_for_lamm_c_sharp\SomeOtherOutputPath\Debug\net8.0-windows\template_for_lamm_c_sharp.dll" />
+</ItemGroup>
+```
+- - "Include="${your_path}""
 
 ### Windows
 
