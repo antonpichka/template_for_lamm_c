@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="library_architecture_mvvm_modify_c_sharp" Version="1.0.0" />
+    <PackageReference Include="library_architecture_mvvm_modify_c_sharp" Version="1.0.1" />
   </ItemGroup>
 
   <Target Name="CleanAndDelete" AfterTargets="Clean">
