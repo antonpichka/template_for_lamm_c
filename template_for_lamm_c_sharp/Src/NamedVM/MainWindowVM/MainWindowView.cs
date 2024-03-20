@@ -57,9 +57,9 @@ public sealed class MainWindowView : Window
             ToolTipText = "TemplateForLAMMCSharp",
         };
         /// BUGS
-        BitmapImage bitmapImage = new();
-        bitmapImage.BeginInit();
-        bitmapImage.EndInit();
+        //BitmapImage bitmapImage = new();
+        //bitmapImage.BeginInit();
+        //bitmapImage.EndInit();
         /// BUGS
         // bitmapImage.UriSource = new Uri("coins_dollar_32.ico");
         // notifyIcon.IconSource = bitmapImage;

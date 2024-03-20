@@ -16,7 +16,7 @@ public class Program
         AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
         {
            Exception e = (Exception)args.ExceptionObject;
-           logger.LogError(e, $"Hello: {e.Message}");
+        //   logger.LogError(e, $"Hello: {e.Message}");
           File.WriteAllText("log.txt", e.ToString()); // Запись ошибки в файл
         };
 
