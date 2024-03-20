@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -20,9 +21,19 @@ public sealed class ConsoleWindowView : Window
 
     private void InitParametersFour() 
     {
-        Title = "LOG";
-        Height = 450;
+        Title = "Console";
+        Height = 400;
         Width = 600;
+        MinHeight = 400;
+        MinWidth = 600;
+        MaxHeight = 400;
+        MaxWidth = 600;
+        ResizeMode = ResizeMode.NoResize;
+        /* You can change it if necessary: WindowState.Maximized/WindowState.Normal */
+        WindowState = WindowState.Maximized;
+        /* You can change it if necessary: WindowState.Maximized/WindowState.Normal */
+        WindowStyle = WindowStyle.None;
+        Closing += ClosingWindowFromSenderAndE;
         grid = new();
         scrollViewerWTextBlockLog = new();
         textBlockLog = new()
@@ -35,7 +46,7 @@ public sealed class ConsoleWindowView : Window
         {
             Content = "Clear",
         };
-        buttonLog.Click += ClickButtonLogParameterTextBlockLog;
+        buttonLog.Click += ClickButtonLogFromSenderAndEParameterTextBlockLog;
     }
 
     private void AdditionalInitParameterTextBlockLog() 
@@ -58,12 +69,17 @@ public sealed class ConsoleWindowView : Window
         Content = grid;
     }
 
-    private void ClickButtonLogParameterTextBlockLog(object sender, RoutedEventArgs e) 
+    private void ClickButtonLogFromSenderAndEParameterTextBlockLog(object sender, RoutedEventArgs e) 
     {
         if(textBlockLog?.Text == "") 
         {
             return;
         }
         textBlockLog!.Text = "";
+    }
+
+    private void ClosingWindowFromSenderAndE(object? sender, CancelEventArgs e)
+    {
+        e.Cancel = true;
     }
 }

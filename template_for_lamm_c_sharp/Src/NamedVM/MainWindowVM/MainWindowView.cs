@@ -1,7 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Hardcodet.Wpf.TaskbarNotification;
 using library_architecture_mvvm_modify_c_sharp;
 
 namespace template_for_lamm_c_sharp;
@@ -29,11 +31,39 @@ public sealed class MainWindowView : Window
         viewModel.Dispose();
     }
 
+    protected override void OnStateChanged(EventArgs e)
+    {
+       if (WindowState == WindowState.Minimized)
+        {
+            Hide();
+            base.OnStateChanged(e);
+            return;
+        }
+        base.OnStateChanged(e);
+    }
+
     private void InitBuildWhereWindow() 
     {
-        Title = "ExampleBlyad";
-        Height = 600;
-        Width = 800;
+        Title = "Example";
+        Height = 400;
+        Width = 600;
+        MinHeight = 400;
+        MinWidth = 600;
+        MaxHeight = 400;
+        MaxWidth = 600;
+        // ResizeMode = ResizeMode.NoResize;
+        TaskbarIcon notifyIcon = new()
+        {
+            ToolTipText = "TemplateForLAMMCSharp",
+        };
+        /// BUGS
+        BitmapImage bitmapImage = new();
+        bitmapImage.BeginInit();
+        bitmapImage.EndInit();
+        /// BUGS
+        // bitmapImage.UriSource = new Uri("coins_dollar_32.ico");
+        // notifyIcon.IconSource = bitmapImage;
+        notifyIcon.TrayMouseDoubleClick += TrayMouseDoubleClickParameterNotifyIcon;
     }
 
     private async void InitParameterViewModel() 
@@ -83,5 +113,11 @@ public sealed class MainWindowView : Window
             default:
                 break;            
         }
+    }
+
+    private void TrayMouseDoubleClickParameterNotifyIcon(object sender, RoutedEventArgs e)
+    {
+        Show();
+        WindowState = WindowState.Normal;
     }
 }

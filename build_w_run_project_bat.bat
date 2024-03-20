@@ -7,14 +7,7 @@ rem ONLY EDIT THIS ROW (Name of your catalog)
 rd /s /q build
 rd /s /q SomeOtherIntermediateOutputPath
 rd /s /q SomeOtherOutputPath
-rd /s /q %systemdrive%\$Recycle.bin
-Xcopy %project%\* build\ /S /E
-set "source=build\."
-set "destination=build\."
-for /r "%source%" %%F in (*) do (
-    copy "%%F" "%destination%"
-)
-rd /s /q build\Src
+robocopy %project% build /S
 cd build
 dotnet build
 dotnet run
