@@ -11,30 +11,35 @@ public sealed class AppView : Application
 
     protected override void OnStartup(StartupEventArgs e)
     {
-        base.OnStartup(e);
-        if(isBuildRelease) 
+        ExceptionHelperUtility.CallExceptionHelperFromThisClassAndCallback(this,() => 
         {
-            MainWindowView mainWindowView = new();
-            mainWindowView.Show();
-            return;
-        }
-        ConsoleWindowView consoleWindowView = new();
-        consoleWindowView.Show();
-        return;
+            base.OnStartup(e);
+            if(isBuildRelease) 
+            {
+                var mainWindowView = new MainWindowView();
+                mainWindowView.Show();
+                return;
+            }
+            var consoleWindowView = new ConsoleWindowView();
+            consoleWindowView.Show();
+        });
     }
 
     protected override void OnActivated(EventArgs e)
     {
-        base.OnActivated(e);
-        if(isBuildRelease) 
+        ExceptionHelperUtility.CallExceptionHelperFromThisClassAndCallback(this,() => 
         {
-            return;
-        }
-        if(mainWindowView != null) 
-        {
-            return;
-        }
-        mainWindowView = new MainWindowView();
-        mainWindowView.Show();
+            base.OnActivated(e);
+            if(isBuildRelease) 
+            {
+                return;
+            }
+            if(mainWindowView != null) 
+            {
+                return;
+            }
+            mainWindowView = new MainWindowView();
+            mainWindowView.Show();
+        });
     }
 }

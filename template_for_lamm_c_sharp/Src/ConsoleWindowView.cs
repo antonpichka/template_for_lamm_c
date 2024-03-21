@@ -14,12 +14,15 @@ public sealed class ConsoleWindowView : Window
 
     public ConsoleWindowView()
     {
-        InitParametersFour();
-        AdditionalInitParameterTextBlockLog();
-        BuildParametersFour();
+        ExceptionHelperUtility.CallExceptionHelperFromThisClassAndCallback(this,()=> 
+        {
+            InitWindowParametersFour();
+            AdditionalInitParameterTextBlockLog();
+            BuildParametersFour();
+        });
     }
 
-    private void InitParametersFour() 
+    private void InitWindowParametersFour() 
     {
         Title = "Console";
         Height = 400;
@@ -29,9 +32,9 @@ public sealed class ConsoleWindowView : Window
         MaxHeight = 400;
         MaxWidth = 600;
         ResizeMode = ResizeMode.NoResize;
-        /* You can change it if necessary: WindowState.Maximized/WindowState.Normal */
+        /* YOU CAN CHANGE IT IF NECESSARY: WindowState.Maximized/WindowState.Normal */
         WindowState = WindowState.Maximized;
-        /* You can change it if necessary: WindowState.Maximized/WindowState.Normal */
+        /* YOU CAN CHANGE IT IF NECESSARY: WindowState.Maximized/WindowState.Normal */
         WindowStyle = WindowStyle.None;
         Closing += ClosingWindowFromSenderAndE;
         grid = new();

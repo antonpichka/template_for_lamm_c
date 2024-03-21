@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Hardcodet.Wpf.TaskbarNotification;
 using library_architecture_mvvm_modify_c_sharp;
@@ -11,38 +10,48 @@ namespace template_for_lamm_c_sharp;
 public sealed class MainWindowView : Window
 {
     /// RELEASE CODE
-    // private readonly MainWindowViewModel viewModel;
+    // private MainWindowViewModel? viewModel;
     /// TEST CODE
-    private readonly TestMainWindowViewModel viewModel;
+    private TestMainWindowViewModel? viewModel;
 
     public MainWindowView()
     {
-        InitBuildWhereWindow();
-        /// RELEASE CODE
-        // viewModel = new MainWindowViewModel();
-        /// TEST CODE
-        viewModel = new TestMainWindowViewModel();
-        InitParameterViewModel();
-        BuildParameterViewModel();
-    }
-    
-    public void DisposeParameterViewModel() 
-    {
-        viewModel.Dispose();
+        ExceptionHelperUtility.CallExceptionHelperFromThisClassAndCallback(this,() => 
+        {
+            /// RELEASE CODE
+            // viewModel = new MainWindowViewModel();
+            /// TEST CODE
+            viewModel = new TestMainWindowViewModel();
+            InitWindow();
+            InitParameterViewModel();
+            BuildParameterViewModel();
+        });
     }
 
     protected override void OnStateChanged(EventArgs e)
     {
-       if (WindowState == WindowState.Minimized)
+        ExceptionHelperUtility.CallExceptionHelperFromThisClassAndCallback(this,() => 
         {
-            Hide();
+            if(WindowState == WindowState.Minimized)
+            {
+                Hide();
+                base.OnStateChanged(e);
+                return;
+            }
             base.OnStateChanged(e);
-            return;
-        }
-        base.OnStateChanged(e);
+        });
     }
 
-    private void InitBuildWhereWindow() 
+    protected override void OnClosed(EventArgs e)
+    {
+        ExceptionHelperUtility.CallExceptionHelperFromThisClassAndCallback(this,() => 
+        {
+            viewModel?.Dispose();
+            base.OnClosed(e);
+        });
+    }
+
+    private void InitWindow() 
     {
         Title = "Example";
         Height = 400;
@@ -51,36 +60,31 @@ public sealed class MainWindowView : Window
         MinWidth = 600;
         MaxHeight = 400;
         MaxWidth = 600;
-        // ResizeMode = ResizeMode.NoResize;
-        TaskbarIcon notifyIcon = new()
+        ResizeMode = ResizeMode.NoResize;
+        WindowState = WindowState.Minimized;
+        TaskbarIcon taskbarIcon = new()
         {
             ToolTipText = "TemplateForLAMMCSharp",
+            Icon = new System.Drawing.Icon(@"../build/Assets/Icon/CoinsDollar32.ico")
         };
-        /// BUGS
-        //BitmapImage bitmapImage = new();
-        //bitmapImage.BeginInit();
-        //bitmapImage.EndInit();
-        /// BUGS
-        // bitmapImage.UriSource = new Uri("coins_dollar_32.ico");
-        // notifyIcon.IconSource = bitmapImage;
-        notifyIcon.TrayMouseDoubleClick += TrayMouseDoubleClickParameterNotifyIcon;
+        taskbarIcon.TrayMouseDoubleClick += TrayMouseDoubleClickParameterNotifyIcon;
     }
 
     private async void InitParameterViewModel() 
     {
-        viewModel.ListenStreamDataForNamedFromCallbackParameterNamedStreamWState((data) =>
+        viewModel?.ListenStreamDataForNamedFromCallbackParameterNamedStreamWState((data) =>
         {
             BuildParameterViewModel();
         });
-        var result = await viewModel.Init();
+        var result = await viewModel!.Init();
         Utility.DebugPrint($"MainWindowView: {result}");
         viewModel.NotifyStreamDataForNamedParameterNamedStreamWState();
     }
     
     private void BuildParameterViewModel() 
     {
-        var dataForNamedParameterNamedStreamWState = viewModel.GetDataForNamedParameterNamedStreamWState();
-        switch(dataForNamedParameterNamedStreamWState.GetEnumDataForNamed()) 
+        var dataForNamedParameterNamedStreamWState = viewModel?.GetDataForNamedParameterNamedStreamWState();
+        switch(dataForNamedParameterNamedStreamWState?.GetEnumDataForNamed()) 
         {
             case EnumDataForMainWindowView.isLoading:
                 Grid gridWIsLoading = new();
