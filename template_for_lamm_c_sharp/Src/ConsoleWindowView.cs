@@ -2,22 +2,23 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace template_for_lamm_c_sharp;
 
 public sealed class ConsoleWindowView : Window
 {
     private Grid? grid;
-    private ScrollViewer? scrollViewerWTextBlockLog;
-    private TextBlock? textBlockLog;
-    private Button? buttonLog;
+    private ScrollViewer? scrollViewerWTextBlock;
+    private TextBlock? textBlock;
+    private Button? button;
 
     public ConsoleWindowView()
     {
         ExceptionHelperUtility.CallExceptionHelperFromThisClassAndCallback(this,()=> 
         {
             InitWindowParametersFour();
-            AdditionalInitParameterTextBlockLog();
+            AdditionalInitParameterTextBlock();
             BuildParametersFour();
         });
     }
@@ -25,63 +26,64 @@ public sealed class ConsoleWindowView : Window
     private void InitWindowParametersFour() 
     {
         Title = "Console";
-        Height = 400;
+        Height = 300;
         Width = 600;
-        MinHeight = 400;
+        MinHeight = 300;
         MinWidth = 600;
-        MaxHeight = 400;
+        MaxHeight = 300;
         MaxWidth = 600;
         ResizeMode = ResizeMode.NoResize;
         /* YOU CAN CHANGE IT IF NECESSARY: WindowState.Maximized/WindowState.Normal */
         WindowState = WindowState.Maximized;
         /* YOU CAN CHANGE IT IF NECESSARY: WindowState.Maximized/WindowState.Normal */
         WindowStyle = WindowStyle.None;
-        Closing += ClosingWindowFromSenderAndE;
+        Icon = BitmapFrame.Create(new Uri(@"../build/Assets/Icon/CMD32.ico",UriKind.RelativeOrAbsolute));
+        Closing += ClosingFromSenderAndE;
         grid = new();
-        scrollViewerWTextBlockLog = new();
-        textBlockLog = new()
+        scrollViewerWTextBlock = new();
+        textBlock = new()
         {
             Foreground = new SolidColorBrush(Color.FromRgb(192, 192, 192)),
             Background = new SolidColorBrush(Colors.Black),
             FontSize = 16.0,
         };
-        buttonLog = new() 
+        button = new() 
         {
             Content = "Clear",
         };
-        buttonLog.Click += ClickButtonLogFromSenderAndEParameterTextBlockLog;
+        button.Click += ClickButtonFromSenderAndEParameterTextBlock;
     }
 
-    private void AdditionalInitParameterTextBlockLog() 
+    private void AdditionalInitParameterTextBlock() 
     {
-        Console.SetOut(new TextBlockWriterUtility(textBlockLog!));
+        Console.SetOut(new TextBlockWriterUtility(textBlock!));
     }
 
     private void BuildParametersFour() 
     {
-        scrollViewerWTextBlockLog!.Content = textBlockLog;
+        scrollViewerWTextBlock!.Content = textBlock;
         grid!.ColumnDefinitions.Add(new ColumnDefinition());
         grid.RowDefinitions.Add(new RowDefinition() {
             Height = new GridLength(10,GridUnitType.Star)
         });
         grid.RowDefinitions.Add(new RowDefinition());
-        Grid.SetRow(scrollViewerWTextBlockLog, 0);
-        grid.Children.Add(scrollViewerWTextBlockLog);
-        Grid.SetRow(buttonLog, 1);
-        grid.Children.Add(buttonLog);
+        Grid.SetRow(scrollViewerWTextBlock, 0);
+        grid.Children.Add(scrollViewerWTextBlock);
+        Grid.SetRow(button, 1);
+        grid.Children.Add(button);
         Content = grid;
     }
 
-    private void ClickButtonLogFromSenderAndEParameterTextBlockLog(object sender, RoutedEventArgs e) 
+    private void ClickButtonFromSenderAndEParameterTextBlock(object sender, RoutedEventArgs e) 
     {
-        if(textBlockLog?.Text == "") 
+        if(textBlock?.Text == "") 
         {
             return;
         }
-        textBlockLog!.Text = "";
+        textBlock!.Text = "";
     }
 
-    private void ClosingWindowFromSenderAndE(object? sender, CancelEventArgs e)
+    private void ClosingFromSenderAndE(object? sender, CancelEventArgs e)
     {
         e.Cancel = true;
     }

@@ -16,11 +16,11 @@ public sealed class AppView : Application
             base.OnStartup(e);
             if(isBuildRelease) 
             {
-                var mainWindowView = new MainWindowView();
+                MainWindowView mainWindowView = new();
                 mainWindowView.Show();
                 return;
             }
-            var consoleWindowView = new ConsoleWindowView();
+            ConsoleWindowView consoleWindowView = new();
             consoleWindowView.Show();
         });
     }
@@ -32,13 +32,13 @@ public sealed class AppView : Application
             base.OnActivated(e);
             if(isBuildRelease) 
             {
-                return;
+                return; 
             }
             if(mainWindowView != null) 
             {
                 return;
             }
-            mainWindowView = new MainWindowView();
+            mainWindowView = new();
             mainWindowView.Show();
         });
     }

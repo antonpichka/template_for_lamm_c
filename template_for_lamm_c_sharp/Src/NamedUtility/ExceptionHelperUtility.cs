@@ -13,5 +13,15 @@ public static class ExceptionHelperUtility
         {
             File.AppendAllText("Exception.log", $"\n===start_to_trace_exception===\n\nWhereHappenedException(Class) --> {thisClass.GetType()}\n DateTime --> {DateTime.Now}\n Exception: {ex}\n\n===end_to_trace_exception===\n");
         }
-    } 
+    }
+    public static void CallExceptionHelperFromNameClassAndCallback(string nameClass,Action callback) 
+    {
+        try 
+        {
+            callback();
+        } catch(Exception ex) 
+        {
+            File.AppendAllText("Exception.log", $"\n===start_to_trace_exception===\n\nWhereHappenedException(Class) --> {nameClass}\n DateTime --> {DateTime.Now}\n Exception: {ex}\n\n===end_to_trace_exception===\n");
+        }
+    }  
 }

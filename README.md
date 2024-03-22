@@ -8,7 +8,7 @@
 
 ## Project setup
 
-- If you need to change the catalog name from "template_for_lamm_c_sharp" to "${name_of_your_catalog}"
+- If you need to change the catalog name from "template_for_lamm_c_sharp" to "${name_of_your_catalog}" and files and namespace
 - Change your project's dependency path in "named_test_main\AlgorithmsUtilityTestMain\AlgorithmsUtilityTestMain.csproj":
 ```
 <ItemGroup>
@@ -43,3 +43,4 @@
 ### Note
 
 - "dotnet" which is a compiler and more. It cannot completely build a project when the files are not in the same directory, so I had to use method the one used above. Maybe I'm stupid and don't understand how to build an entire project using "dotnet" alone, without resorting to .bat and other cmd commands.
+- Use the "ExceptionHelperUtility" class, otherwise when you develop a program using WPF, no crashes appear in the console when executing the program, and you have to resort to such crooked methods, basically we use this class in all Views. You can use the Microsoft Visual Studio development environment and not resort to such nonsense.

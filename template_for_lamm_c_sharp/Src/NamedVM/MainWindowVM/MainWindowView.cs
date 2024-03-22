@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Hardcodet.Wpf.TaskbarNotification;
 using library_architecture_mvvm_modify_c_sharp;
@@ -38,6 +40,7 @@ public sealed class MainWindowView : Window
                 base.OnStateChanged(e);
                 return;
             }
+            Show();
             base.OnStateChanged(e);
         });
     }
@@ -60,14 +63,17 @@ public sealed class MainWindowView : Window
         MinWidth = 600;
         MaxHeight = 400;
         MaxWidth = 600;
+        Icon = BitmapFrame.Create(new Uri(@"../build/Assets/Icon/CoinsDollar32.ico",UriKind.RelativeOrAbsolute));
         ResizeMode = ResizeMode.NoResize;
-        WindowState = WindowState.Minimized;
+        WindowState = WindowState.Normal;
+        Closing += ClosingFromSenderAndE;  
         TaskbarIcon taskbarIcon = new()
         {
             ToolTipText = "TemplateForLAMMCSharp",
             Icon = new System.Drawing.Icon(@"../build/Assets/Icon/CoinsDollar32.ico")
         };
-        taskbarIcon.TrayMouseDoubleClick += TrayMouseDoubleClickParameterNotifyIcon;
+        taskbarIcon.TrayLeftMouseUp += TrayLeftMouseClickFromSenderAndE;
+        taskbarIcon.TrayLeftMouseDown += TrayLeftMouseClickFromSenderAndE;
     }
 
     private async void InitParameterViewModel() 
@@ -119,9 +125,16 @@ public sealed class MainWindowView : Window
         }
     }
 
-    private void TrayMouseDoubleClickParameterNotifyIcon(object sender, RoutedEventArgs e)
+    private void ClosingFromSenderAndE(object? sender, CancelEventArgs e)
+    {
+        e.Cancel = true;
+        WindowState = WindowState.Minimized;
+        ShowInTaskbar = true;
+    }
+
+    private void TrayLeftMouseClickFromSenderAndE(object sender, RoutedEventArgs e)
     {
         Show();
         WindowState = WindowState.Normal;
     }
-}
+}   
