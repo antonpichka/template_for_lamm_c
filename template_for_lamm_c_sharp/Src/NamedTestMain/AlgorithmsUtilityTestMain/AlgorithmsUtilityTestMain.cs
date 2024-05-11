@@ -10,8 +10,8 @@ public class AlgorithmsUtilityTestMain
     public static void Main(string[] args) 
     {
         Utility.DebugPrint($"{AlgorithmsUtility.IsWhereEqualsStartExceptionFromStr(" \n===start_to_trace_exception===\n qwqwqwqwqwqwqwqwqwq")}");
-        // EXPECTED OUTPUT:
-        //
-        // True
     }
-}    
+}
+// EXPECTED OUTPUT:
+//
+// True

@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
-    <PackageReference Include="library_architecture_mvvm_modify_c_sharp" Version="1.0.1" />
+    <PackageReference Include="library_architecture_mvvm_modify_c_sharp" Version="2.0.0" />
   </ItemGroup>
 
   <Target Name="CleanAndDelete" AfterTargets="Clean">

@@ -9,5 +9,6 @@ rd /s /q intermediate_output
 rd /s /q output
 robocopy %project% build /S
 cd build
+rd /s /q Src\NamedTestMain
 dotnet build
 PAUSE

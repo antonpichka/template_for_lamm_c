@@ -1,5 +1,5 @@
 - https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#architectural-objects
-- https://github.com/antonpichka/library_architecture_mvvm_modify_c_sharp/blob/main/example/Example.cs
+- https://github.com/antonpichka/library_architecture_mvvm_modify_c_sharp/blob/main/library_architecture_mvvm_modify_c_sharp/Example/Example.cs
 - https://github.com/antonpichka/library_architecture_mvvm_modify/labels
 
 ---
@@ -9,7 +9,7 @@
 ## Project setup
 
 - If you need to change the catalog name from "template_for_lamm_c_sharp" to "${name_of_your_catalog}" and files and namespace
-- Change your project's dependency path in "named_test_main\AlgorithmsUtilityTestMain\AlgorithmsUtilityTestMain.csproj":
+- Change your project's dependency path in "template_for_lamm_c_sharp\Src\NamedTestMain\AlgorithmsUtilityTestMain\AlgorithmsUtilityTestMain.csproj":
 ```
 <ItemGroup>
     <Reference Include="C:\Developer\Projects\template_for_lamm_c_sharp\output\Debug\net8.0-windows\template_for_lamm_c_sharp.dll" />
@@ -23,20 +23,26 @@
 - - set "project=${name_of_your_catalog}"
 - build_project_bat.bat:
 - - set "project=${name_of_your_catalog}"
+
+#### Build "template_for_lamm_c_sharp"
+
+- Commands cmd:
+- - start /min build_project_bat.bat
+- - taskkill /f /im dotnet.exe
+- - taskkill /f /im cmd.exe
+- Commands PowerShell:
+- - Start-Process -FilePath "build_project_bat.bat"
+- - taskkill /f /im dotnet.exe
+- - taskkill /f /im cmd.exe
+
+#### Build and run "template_for_lamm_c_sharp"
+
 - Commands cmd:
 - - start /min build_w_run_project_bat.bat
 - - taskkill /f /im dotnet.exe
 - - taskkill /f /im cmd.exe
 - Commands PowerShell:
 - - Start-Process -FilePath "build_w_run_project_bat.bat"
-- - taskkill /f /im dotnet.exe
-- - taskkill /f /im cmd.exe
-- Commands cmd (Only Build):
-- - start /min build_project_bat.bat
-- - taskkill /f /im dotnet.exe
-- - taskkill /f /im cmd.exe
-- Commands PowerShell (Only Build):
-- - Start-Process -FilePath "build_project_bat.bat"
 - - taskkill /f /im dotnet.exe
 - - taskkill /f /im cmd.exe
 

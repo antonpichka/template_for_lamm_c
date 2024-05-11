@@ -7,7 +7,7 @@ public sealed class AppView : Application
     /* ONLY EDIT THIS LINE IF YOU WILL MAKE A RELEASE */
     private readonly bool isBuildRelease = false;
     /* ONLY EDIT THIS LINE IF YOU WILL MAKE A RELEASE */
-    private MainWindowView? mainWindowView;
+    private MainWindowVM? mainWindowView;
 
     protected override void OnStartup(StartupEventArgs e)
     {
@@ -16,7 +16,7 @@ public sealed class AppView : Application
             base.OnStartup(e);
             if(isBuildRelease) 
             {
-                MainWindowView mainWindowView = new();
+                MainWindowVM mainWindowView = new();
                 mainWindowView.Show();
                 return;
             }
