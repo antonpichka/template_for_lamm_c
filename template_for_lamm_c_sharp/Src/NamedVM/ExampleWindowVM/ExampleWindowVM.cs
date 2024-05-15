@@ -1,28 +1,26 @@
-﻿using System.ComponentModel;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Hardcodet.Wpf.TaskbarNotification;
 using library_architecture_mvvm_modify_c_sharp;
 
 namespace template_for_lamm_c_sharp;
 
-public sealed class MainWindowVM : Window
+public sealed class ExampleWindowVM : Window
 {
     // OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
     // NamedUtility
     
     // Main objects
-    private BaseNamedStreamWState<DataForMainWindowVM,EnumDataForMainWindowVM>? namedStreamWState;
+    private BaseNamedStreamWState<DataForExampleWindowVM,EnumDataForExampleWindowVM>? namedStreamWState;
     private RWTMode? rwtMode;
 
-    public MainWindowVM()
+    public ExampleWindowVM()
     {
         ExceptionHelperUtility.CallExceptionHelperFromThisClassAndCallback(this,() => 
         {
-            namedStreamWState = new DefaultStreamWState<DataForMainWindowVM,EnumDataForMainWindowVM>(new DataForMainWindowVM(true));
+            namedStreamWState = new DefaultStreamWState<DataForExampleWindowVM,EnumDataForExampleWindowVM>(new DataForExampleWindowVM(true));
             rwtMode = new RWTMode(
                 EnumRWTMode.test,
                 [
@@ -46,21 +44,6 @@ public sealed class MainWindowVM : Window
         });
     }
 
-    protected override void OnStateChanged(EventArgs e)
-    {
-        ExceptionHelperUtility.CallExceptionHelperFromThisClassAndCallback(this,() => 
-        {
-            if(WindowState == WindowState.Minimized)
-            {
-                Hide();
-                base.OnStateChanged(e);
-                return;
-            }
-            Show();
-            base.OnStateChanged(e);
-        });
-    }
-
     protected override void OnClosed(EventArgs e)
     {
         ExceptionHelperUtility.CallExceptionHelperFromThisClassAndCallback(this,() => 
@@ -72,7 +55,7 @@ public sealed class MainWindowVM : Window
 
     private async void Init() 
     {
-        Title = "MainWindow";
+        Title = "ExampleWindow";
         Height = 400;
         Width = 600;
         MinHeight = 400;
@@ -81,21 +64,13 @@ public sealed class MainWindowVM : Window
         MaxWidth = 600;
         Icon = BitmapFrame.Create(new Uri(@"../build/Assets/Icon/CoinsDollar32.ico",UriKind.RelativeOrAbsolute));
         ResizeMode = ResizeMode.NoResize;
-        WindowState = WindowState.Normal;
-        Closing += ClosingFromSenderAndE;  
-        TaskbarIcon taskbarIcon = new()
-        {
-            ToolTipText = "TemplateForLAMMCSharp",
-            Icon = new System.Drawing.Icon(@"../build/Assets/Icon/CoinsDollar32.ico")
-        };
-        taskbarIcon.TrayLeftMouseUp += TrayLeftMouseClickFromSenderAndE;
-        taskbarIcon.TrayLeftMouseDown += TrayLeftMouseClickFromSenderAndE;
+        WindowState = WindowState.Normal; 
         namedStreamWState?.ListenStreamDataForNamedFromCallback((data) =>
         {
             Build();
         });
         var result = await rwtMode?.GetNamedCallbackFromName("init").callback();
-        Utility.DebugPrint($"MainWindowVM: {result}");
+        Utility.DebugPrint($"ExampleWindowVM: {result}");
         namedStreamWState?.NotifyStreamDataForNamed();
     }
     
@@ -104,7 +79,7 @@ public sealed class MainWindowVM : Window
         var dataForNamed = namedStreamWState?.GetDataForNamed();
         switch(dataForNamed?.GetEnumDataForNamed()) 
         {
-            case EnumDataForMainWindowVM.isLoading:
+            case EnumDataForExampleWindowVM.isLoading:
                 Grid gridWIsLoading = new();
                 gridWIsLoading.Children.Add(new Ellipse() {
                     Width = 50,
@@ -114,7 +89,7 @@ public sealed class MainWindowVM : Window
                 });
                 Content = gridWIsLoading;
                 break;
-            case EnumDataForMainWindowVM.exception:
+            case EnumDataForExampleWindowVM.exception:
                 Grid gridWException = new();
                 gridWException.Children.Add(new TextBlock() {
                     Text = dataForNamed.exceptionController.GetKeyParameterException(),
@@ -123,7 +98,7 @@ public sealed class MainWindowVM : Window
                 });
                 Content = gridWException;
                 break;
-            case EnumDataForMainWindowVM.success:
+            case EnumDataForExampleWindowVM.success:
                 Grid gridWSuccess = new();
                 gridWSuccess.Children.Add(new TextBlock() {
                     Text = "Success",
@@ -135,24 +110,5 @@ public sealed class MainWindowVM : Window
             default:
                 break;            
         }
-    }
-
-    private void ClosingFromSenderAndE(object? sender, CancelEventArgs e)
-    {
-        ExceptionHelperUtility.CallExceptionHelperFromThisClassAndCallback(this,() => 
-        {
-            e.Cancel = true;
-            WindowState = WindowState.Minimized;
-            ShowInTaskbar = true;
-        });
-    }
-
-    private void TrayLeftMouseClickFromSenderAndE(object sender, RoutedEventArgs e)
-    {
-        ExceptionHelperUtility.CallExceptionHelperFromThisClassAndCallback(this,() => 
-        {
-            Show();
-            WindowState = WindowState.Normal;
-        });
     }
 }   

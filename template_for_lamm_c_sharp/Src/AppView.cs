@@ -7,7 +7,10 @@ public sealed class AppView : Application
     /* ONLY EDIT THIS LINE IF YOU WILL MAKE A RELEASE */
     private readonly bool isBuildRelease = false;
     /* ONLY EDIT THIS LINE IF YOU WILL MAKE A RELEASE */
-    private MainWindowVM? mainWindowView;
+    
+    /* You can put any starting class if you need to test it */
+    private MainWindowVM? namedWindowVM;
+    /* You can put any starting class if you need to test it */
 
     protected override void OnStartup(StartupEventArgs e)
     {
@@ -16,8 +19,8 @@ public sealed class AppView : Application
             base.OnStartup(e);
             if(isBuildRelease) 
             {
-                MainWindowVM mainWindowView = new();
-                mainWindowView.Show();
+                MainWindowVM mainWindowVM = new();
+                mainWindowVM.Show();
                 return;
             }
             ConsoleWindowView consoleWindowView = new();
@@ -34,12 +37,12 @@ public sealed class AppView : Application
             {
                 return; 
             }
-            if(mainWindowView != null) 
+            if(namedWindowVM != null) 
             {
                 return;
             }
-            mainWindowView = new();
-            mainWindowView.Show();
+            namedWindowVM = new();
+            namedWindowVM.Show();
         });
     }
 }
