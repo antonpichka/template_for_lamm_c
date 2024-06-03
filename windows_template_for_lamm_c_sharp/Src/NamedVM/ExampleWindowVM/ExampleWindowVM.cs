@@ -5,7 +5,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using library_architecture_mvvm_modify_c_sharp;
 
-namespace template_for_lamm_c_sharp;
+namespace windows_template_for_lamm_c_sharp;
 
 public sealed class ExampleWindowVM : Window
 {
@@ -21,23 +21,25 @@ public sealed class ExampleWindowVM : Window
         ExceptionHelperUtility.CallExceptionHelperFromThisClassAndCallback(this,() => 
         {
             namedStreamWState = new DefaultStreamWState<DataForExampleWindowVM,EnumDataForExampleWindowVM>(new DataForExampleWindowVM(true));
+            Func<Task<string>> initReleaseCallback = async () =>
+            {
+                await Task.Delay(1000);
+                namedStreamWState.GetDataForNamed().isLoading = false;
+                return KeysSuccessUtility.sUCCESS;
+            };
+            Func<Task<string>> initTestCallback = async () =>
+            {
+                await Task.Delay(1000);
+                namedStreamWState.GetDataForNamed().isLoading = false;
+                return KeysSuccessUtility.sUCCESS;
+            };
             rwtMode = new RWTMode(
                 EnumRWTMode.test,
                 [
-                    new NamedCallback("init",(Func<Task<string>>)(async () =>
-                    {
-                        await Task.Delay(1000);
-                        namedStreamWState.GetDataForNamed().isLoading = false;
-                        return KeysSuccessUtility.sUCCESS;
-                    })),
+                    new NamedCallback("init",initReleaseCallback),
                 ],
                 [
-                    new NamedCallback("init",(Func<Task<string>>)(async () =>
-                    {
-                        await Task.Delay(1000);
-                        namedStreamWState.GetDataForNamed().isLoading = false;
-                        return KeysSuccessUtility.sUCCESS;
-                    })),
+                    new NamedCallback("init",initTestCallback),
                 ]);
             Init();
             Build();
@@ -65,12 +67,12 @@ public sealed class ExampleWindowVM : Window
         Icon = BitmapFrame.Create(new Uri(@"../build/Assets/Icon/CoinsDollar32.ico",UriKind.RelativeOrAbsolute));
         ResizeMode = ResizeMode.NoResize;
         WindowState = WindowState.Normal; 
-        namedStreamWState?.ListenStreamDataForNamedFromCallback((data) =>
+        namedStreamWState?.ListenStreamDataForNamedFromCallback((_data) =>
         {
             Build();
         });
-        var result = await rwtMode?.GetNamedCallbackFromName("init").callback();
-        Utility.DebugPrint($"ExampleWindowVM: {result}");
+        var callback = await rwtMode?.GetNamedCallbackFromName("init").callback();
+        Utility.DebugPrint($"ExampleWindowVM: {callback}");
         namedStreamWState?.NotifyStreamDataForNamed();
     }
     

@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace template_for_lamm_c_sharp;
+namespace windows_template_for_lamm_c_sharp;
 
 public sealed class ConsoleWindowView : Window
 {

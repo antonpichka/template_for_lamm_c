@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Versioning;
 using library_architecture_mvvm_modify_c_sharp;
-using template_for_lamm_c_sharp;
+using windows_template_for_lamm_c_sharp;
 
 namespace AlgorithmsUtilityTestMain;
 

@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="C:\Developer\Projects\template_for_lamm_c_sharp\output\Debug\net8.0-windows\template_for_lamm_c_sharp.dll" />
+    <Reference Include="C:\Developer\Projects\template_for_lamm_c_sharp\output\Debug\net8.0-windows\windows_template_for_lamm_c_sharp.dll" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="library_architecture_mvvm_modify_c_sharp" Version="1.0.1" />
+    <PackageReference Include="library_architecture_mvvm_modify_c_sharp" Version="2.0.1" />
   </ItemGroup>
 
 </Project>

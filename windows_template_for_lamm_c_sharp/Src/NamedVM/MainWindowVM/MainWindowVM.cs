@@ -7,7 +7,7 @@ using System.Windows.Shapes;
 using Hardcodet.Wpf.TaskbarNotification;
 using library_architecture_mvvm_modify_c_sharp;
 
-namespace template_for_lamm_c_sharp;
+namespace windows_template_for_lamm_c_sharp;
 
 public sealed class MainWindowVM : Window
 {
@@ -23,23 +23,25 @@ public sealed class MainWindowVM : Window
         ExceptionHelperUtility.CallExceptionHelperFromThisClassAndCallback(this,() => 
         {
             namedStreamWState = new DefaultStreamWState<DataForMainWindowVM,EnumDataForMainWindowVM>(new DataForMainWindowVM(true));
+            Func<Task<string>> initReleaseCallback = async () =>
+            {
+                await Task.Delay(1000);
+                namedStreamWState.GetDataForNamed().isLoading = false;
+                return KeysSuccessUtility.sUCCESS;
+            };
+            Func<Task<string>> initTestCallback = async () =>
+            {
+                await Task.Delay(1000);
+                namedStreamWState.GetDataForNamed().isLoading = false;
+                return KeysSuccessUtility.sUCCESS;
+            };
             rwtMode = new RWTMode(
                 EnumRWTMode.test,
                 [
-                    new NamedCallback("init",(Func<Task<string>>)(async () =>
-                    {
-                        await Task.Delay(1000);
-                        namedStreamWState.GetDataForNamed().isLoading = false;
-                        return KeysSuccessUtility.sUCCESS;
-                    })),
+                    new NamedCallback("init",initReleaseCallback),
                 ],
                 [
-                    new NamedCallback("init",(Func<Task<string>>)(async () =>
-                    {
-                        await Task.Delay(1000);
-                        namedStreamWState.GetDataForNamed().isLoading = false;
-                        return KeysSuccessUtility.sUCCESS;
-                    })),
+                    new NamedCallback("init",initTestCallback),
                 ]);
             Init();
             Build();
@@ -90,12 +92,12 @@ public sealed class MainWindowVM : Window
         };
         taskbarIcon.TrayLeftMouseUp += TrayLeftMouseClickFromSenderAndE;
         taskbarIcon.TrayLeftMouseDown += TrayLeftMouseClickFromSenderAndE;
-        namedStreamWState?.ListenStreamDataForNamedFromCallback((data) =>
+        namedStreamWState?.ListenStreamDataForNamedFromCallback((_data) =>
         {
             Build();
         });
-        var result = await rwtMode?.GetNamedCallbackFromName("init").callback();
-        Utility.DebugPrint($"MainWindowVM: {result}");
+        var callback = await rwtMode?.GetNamedCallbackFromName("init").callback();
+        Utility.DebugPrint($"MainWindowVM: {callback}");
         namedStreamWState?.NotifyStreamDataForNamed();
     }
     

@@ -2,7 +2,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Controls;
 
-namespace template_for_lamm_c_sharp;
+namespace windows_template_for_lamm_c_sharp;
 
 public sealed class TextBlockWriterUtility(TextBlock textBlock) : TextWriter
 {

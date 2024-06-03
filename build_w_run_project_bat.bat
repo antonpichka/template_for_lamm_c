@@ -1,7 +1,7 @@
 @echo off
 
 rem ONLY EDIT THIS ROW (Name of your catalog)
-set "project=template_for_lamm_c_sharp"
+set "project=windows_template_for_lamm_c_sharp"
 rem ONLY EDIT THIS ROW (Name of your catalog)
 
 rd /s /q build
