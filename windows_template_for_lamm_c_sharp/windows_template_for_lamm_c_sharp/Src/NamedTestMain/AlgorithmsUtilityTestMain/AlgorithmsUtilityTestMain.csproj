@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="C:\Developer\Projects\template_for_lamm_c_sharp\output\Debug\net8.0-windows\windows_template_for_lamm_c_sharp.dll" />
+    <Reference Include="C:\Developer\Projects\template_for_lamm_c_sharp\windows_template_for_lamm_c_sharp\output\Debug\net8.0-windows\windows_template_for_lamm_c_sharp.dll" />
   </ItemGroup>
 
   <ItemGroup>
