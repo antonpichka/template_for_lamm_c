@@ -11,38 +11,17 @@ namespace windows_template_for_lamm_c_sharp;
 
 public sealed class MainWindowVM : Window
 {
-    // OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
+    // ModelRepository
     // NamedUtility
     
-    // Main objects
+    // NamedStreamWState
     private BaseNamedStreamWState<DataForMainWindowVM,EnumDataForMainWindowVM>? namedStreamWState;
-    private RWTMode? rwtMode;
 
     public MainWindowVM()
     {
         ExceptionHelperUtility.CallExceptionHelperFromThisClassAndCallback(this,() => 
         {
             namedStreamWState = new DefaultStreamWState<DataForMainWindowVM,EnumDataForMainWindowVM>(new DataForMainWindowVM(true));
-            Func<Task<string>> initReleaseCallback = async () =>
-            {
-                await Task.Delay(1000);
-                namedStreamWState.GetDataForNamed().isLoading = false;
-                return KeysSuccessUtility.sUCCESS;
-            };
-            Func<Task<string>> initTestCallback = async () =>
-            {
-                await Task.Delay(1000);
-                namedStreamWState.GetDataForNamed().isLoading = false;
-                return KeysSuccessUtility.sUCCESS;
-            };
-            rwtMode = new RWTMode(
-                EnumRWTMode.test,
-                [
-                    new NamedCallback("init",initReleaseCallback),
-                ],
-                [
-                    new NamedCallback("init",initTestCallback),
-                ]);
             Init();
             Build();
         });
@@ -96,8 +75,8 @@ public sealed class MainWindowVM : Window
         {
             Build();
         });
-        var callback = await rwtMode?.GetNamedCallbackFromName("init").callback();
-        Utility.DebugPrint($"MainWindowVM: {callback}");
+        var firstRequest = await FirstRequest();
+        Utility.DebugPrint($"MainWindowVM: {firstRequest}");
         namedStreamWState?.NotifyStreamDataForNamed();
     }
     
@@ -156,5 +135,12 @@ public sealed class MainWindowVM : Window
             Show();
             WindowState = WindowState.Normal;
         });
+    }
+
+    private async Task<string> FirstRequest() 
+    {
+        await Task.Delay(1000);
+        namedStreamWState!.GetDataForNamed().isLoading = false;
+        return ReadyDataUtility.success;
     }
 }   

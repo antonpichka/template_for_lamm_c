@@ -22,9 +22,9 @@
 
 #### Windows
 
-- 'build_w_run_project_bat.bat':
-- - set "project=${name_of_your_catalog}"
 - 'build_project_bat.bat':
+- - set "project=${name_of_your_catalog}"
+- 'build_w_run_project_bat.bat':
 - - set "project=${name_of_your_catalog}"
 - Build "windows_template_for_lamm_c_sharp"
 - - Commands cmd:

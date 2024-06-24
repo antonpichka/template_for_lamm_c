@@ -9,38 +9,17 @@ namespace windows_template_for_lamm_c_sharp;
 
 public sealed class ExampleWindowVM : Window
 {
-    // OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
+    // ModelRepository
     // NamedUtility
     
-    // Main objects
+    // NamedStreamWState
     private BaseNamedStreamWState<DataForExampleWindowVM,EnumDataForExampleWindowVM>? namedStreamWState;
-    private RWTMode? rwtMode;
 
     public ExampleWindowVM()
     {
         ExceptionHelperUtility.CallExceptionHelperFromThisClassAndCallback(this,() => 
         {
             namedStreamWState = new DefaultStreamWState<DataForExampleWindowVM,EnumDataForExampleWindowVM>(new DataForExampleWindowVM(true));
-            Func<Task<string>> initReleaseCallback = async () =>
-            {
-                await Task.Delay(1000);
-                namedStreamWState.GetDataForNamed().isLoading = false;
-                return KeysSuccessUtility.sUCCESS;
-            };
-            Func<Task<string>> initTestCallback = async () =>
-            {
-                await Task.Delay(1000);
-                namedStreamWState.GetDataForNamed().isLoading = false;
-                return KeysSuccessUtility.sUCCESS;
-            };
-            rwtMode = new RWTMode(
-                EnumRWTMode.test,
-                [
-                    new NamedCallback("init",initReleaseCallback),
-                ],
-                [
-                    new NamedCallback("init",initTestCallback),
-                ]);
             Init();
             Build();
         });
@@ -71,8 +50,8 @@ public sealed class ExampleWindowVM : Window
         {
             Build();
         });
-        var callback = await rwtMode?.GetNamedCallbackFromName("init").callback();
-        Utility.DebugPrint($"ExampleWindowVM: {callback}");
+        var firstRequest = await FirstRequest();
+        Utility.DebugPrint($"ExampleWindowVM: {firstRequest}");
         namedStreamWState?.NotifyStreamDataForNamed();
     }
     
@@ -112,5 +91,12 @@ public sealed class ExampleWindowVM : Window
             default:
                 break;            
         }
+    }
+
+    private async Task<string> FirstRequest() 
+    {
+        await Task.Delay(1000);
+        namedStreamWState!.GetDataForNamed().isLoading = false;
+        return ReadyDataUtility.success;
     }
 }   
