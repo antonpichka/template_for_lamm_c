@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows_template_for_lamm_c_sharp", "windows_template_for_lamm_c_sharp", "{97A4D5C2-1EDE-425B-9BBF-AF2CD5456DF2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows_template_for_lamm_c_sharp", "windows_template_for_lamm_c_sharp", "{B9B3CEB7-F01D-487B-BEB1-E7BAA80B9307}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "windows_template_for_lamm_c_sharp", "windows_template_for_lamm_c_sharp\windows_template_for_lamm_c_sharp\windows_template_for_lamm_c_sharp.csproj", "{A40CB987-A675-4D1A-9A4A-AC8B9ADC6111}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "windows_template_for_lamm_c_sharp", "windows_template_for_lamm_c_sharp\build\windows_template_for_lamm_c_sharp.csproj", "{870B9F79-4328-49C1-BB5C-FC14E7AF4B08}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows_template_for_lamm_c_sharp (1)", "windows_template_for_lamm_c_sharp", "{B8948367-52C3-48DD-9BFC-4D0D8DE310D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "windows_template_for_lamm_c_sharp (1)", "windows_template_for_lamm_c_sharp\windows_template_for_lamm_c_sharp\windows_template_for_lamm_c_sharp.csproj", "{82CCD7E6-3189-4A48-8540-3E81704CE0CF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{A9518257-27C8-4FBB-9765-BE3AAFBC7561}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows_template_for_lamm_c_sharp (2)", "windows_template_for_lamm_c_sharp", "{9513EAE0-6509-47C0-B47A-12086D99180E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NamedTestMain", "NamedTestMain", "{8A929492-0E09-419E-9E42-668DB7B9E781}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{D1D8D26F-5461-433F-9058-A109D2CDDFB9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgorithmsUtilityTestMain", "windows_template_for_lamm_c_sharp\windows_template_for_lamm_c_sharp\Src\NamedTestMain\AlgorithmsUtilityTestMain\AlgorithmsUtilityTestMain.csproj", "{8B516D3C-6FCF-4E45-909B-26AFEA1FB436}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NamedTestMain", "NamedTestMain", "{2A24B177-0537-436A-8B50-57E876E43B0D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgorithmsUtilityTestMain", "windows_template_for_lamm_c_sharp\windows_template_for_lamm_c_sharp\Src\NamedTestMain\AlgorithmsUtilityTestMain\AlgorithmsUtilityTestMain.csproj", "{22C5C668-9781-427F-B881-41C04E7D147C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,26 +23,31 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A40CB987-A675-4D1A-9A4A-AC8B9ADC6111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A40CB987-A675-4D1A-9A4A-AC8B9ADC6111}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A40CB987-A675-4D1A-9A4A-AC8B9ADC6111}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A40CB987-A675-4D1A-9A4A-AC8B9ADC6111}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8B516D3C-6FCF-4E45-909B-26AFEA1FB436}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8B516D3C-6FCF-4E45-909B-26AFEA1FB436}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8B516D3C-6FCF-4E45-909B-26AFEA1FB436}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8B516D3C-6FCF-4E45-909B-26AFEA1FB436}.Release|Any CPU.Build.0 = Release|Any CPU
+		{870B9F79-4328-49C1-BB5C-FC14E7AF4B08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{870B9F79-4328-49C1-BB5C-FC14E7AF4B08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{870B9F79-4328-49C1-BB5C-FC14E7AF4B08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{870B9F79-4328-49C1-BB5C-FC14E7AF4B08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82CCD7E6-3189-4A48-8540-3E81704CE0CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82CCD7E6-3189-4A48-8540-3E81704CE0CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82CCD7E6-3189-4A48-8540-3E81704CE0CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82CCD7E6-3189-4A48-8540-3E81704CE0CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22C5C668-9781-427F-B881-41C04E7D147C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22C5C668-9781-427F-B881-41C04E7D147C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22C5C668-9781-427F-B881-41C04E7D147C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22C5C668-9781-427F-B881-41C04E7D147C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{A40CB987-A675-4D1A-9A4A-AC8B9ADC6111} = {97A4D5C2-1EDE-425B-9BBF-AF2CD5456DF2}
-		{B8948367-52C3-48DD-9BFC-4D0D8DE310D7} = {97A4D5C2-1EDE-425B-9BBF-AF2CD5456DF2}
-		{A9518257-27C8-4FBB-9765-BE3AAFBC7561} = {B8948367-52C3-48DD-9BFC-4D0D8DE310D7}
-		{8A929492-0E09-419E-9E42-668DB7B9E781} = {A9518257-27C8-4FBB-9765-BE3AAFBC7561}
-		{8B516D3C-6FCF-4E45-909B-26AFEA1FB436} = {8A929492-0E09-419E-9E42-668DB7B9E781}
+		{870B9F79-4328-49C1-BB5C-FC14E7AF4B08} = {B9B3CEB7-F01D-487B-BEB1-E7BAA80B9307}
+		{82CCD7E6-3189-4A48-8540-3E81704CE0CF} = {B9B3CEB7-F01D-487B-BEB1-E7BAA80B9307}
+		{9513EAE0-6509-47C0-B47A-12086D99180E} = {B9B3CEB7-F01D-487B-BEB1-E7BAA80B9307}
+		{D1D8D26F-5461-433F-9058-A109D2CDDFB9} = {9513EAE0-6509-47C0-B47A-12086D99180E}
+		{2A24B177-0537-436A-8B50-57E876E43B0D} = {D1D8D26F-5461-433F-9058-A109D2CDDFB9}
+		{22C5C668-9781-427F-B881-41C04E7D147C} = {2A24B177-0537-436A-8B50-57E876E43B0D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {25D56BA5-E692-4011-9F15-2F4E1FDC25A7}
+		SolutionGuid = {B34FFD68-1286-440F-B5A6-F2819CE2D638}
 	EndGlobalSection
 EndGlobal
