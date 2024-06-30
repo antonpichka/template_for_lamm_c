@@ -4,16 +4,17 @@ namespace windows_template_for_lamm_c_sharp;
 
 public class ExampleRepository<T, Y> : BaseModelRepository<T, Y> where T : Example where Y : ListExample<T>
 {
-    private readonly Func<Task<Result<T>>> getExampleParameterQweServiceWReleaseCallback;
-    private readonly Func<Task<Result<T>>> getExampleParameterQweServiceWTestCallback;
+    protected Func<Task<Result<T>>> getExampleParameterOneWReleaseCallback;
+    protected Func<Task<Result<T>>> getExampleParameterOneWTestCallback;
 
-    public ExampleRepository(EnumRWTMode enumRWTMode) : base(enumRWTMode)
+    public ExampleRepository(EnumRWTMode enumRWTModeFirst)
     {
-        getExampleParameterQweServiceWReleaseCallback = () =>
+        enumRWTMode = enumRWTModeFirst;
+        getExampleParameterOneWReleaseCallback = () =>
         {
             throw new Exception();
         };
-        getExampleParameterQweServiceWTestCallback = () =>
+        getExampleParameterOneWTestCallback = () =>
         {
             throw new Exception();
         };
@@ -21,11 +22,8 @@ public class ExampleRepository<T, Y> : BaseModelRepository<T, Y> where T : Examp
 
     protected override T GetBaseModelFromMapAndListKeys(Dictionary<string, dynamic> map, List<string> listKeys)
     {
-        if(listKeys.Count < 1)
-        {
-            return (new Example("") as T)!;
-        }
-        return (new Example(map.TryGetValue(listKeys[0], out dynamic? value) ? value : "") as T)!;
+        return (new Example(
+            GetSafeValueWhereUsedInMethodGetModelFromMapAndListKeysAndIndexAndDefaultValue(map,listKeys,0,"")) as T)!;
     }
 
     protected override Y GetBaseListModelFromListModel(List<T> listModel)
@@ -33,8 +31,12 @@ public class ExampleRepository<T, Y> : BaseModelRepository<T, Y> where T : Examp
         return (new ListExample<T>(listModel) as Y)!;
     }
 
-    public Task<Result<T>> GetExampleParameterQweService() 
+    public Task<Result<T>> GetExampleParameterOne() 
     {
-        return GetModeCallbackFromReleaseCallbackAndTestCallbackParameterEnumRWTMode(getExampleParameterQweServiceWReleaseCallback,getExampleParameterQweServiceWTestCallback)();
+        return GetModeCallbackFromReleaseCallbackAndTestCallbackParameterEnumRWTMode(getExampleParameterOneWReleaseCallback,getExampleParameterOneWTestCallback)();
+    }
+
+    protected List<string> GetExampleParameterOneWListKeys() {
+        throw new Exception();
     }
 }
