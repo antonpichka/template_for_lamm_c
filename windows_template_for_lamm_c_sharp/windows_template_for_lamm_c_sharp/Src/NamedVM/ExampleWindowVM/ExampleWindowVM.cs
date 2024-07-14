@@ -19,7 +19,7 @@ public sealed class ExampleWindowVM : Window
     {
         ExceptionHelperUtility.CallExceptionHelperFromThisClassAndCallback(this,() => 
         {
-            namedStreamWState = new DefaultStreamWState<DataForExampleWindowVM,EnumDataForExampleWindowVM>(new DataForExampleWindowVM(true));
+            namedStreamWState = FactoryObjectUtility.GetNamedStreamWStateWhereDataWExampleWindowVM();
             Init();
             Build();
         });

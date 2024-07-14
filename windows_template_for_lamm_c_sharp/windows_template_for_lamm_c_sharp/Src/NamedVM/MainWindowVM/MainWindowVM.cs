@@ -21,7 +21,7 @@ public sealed class MainWindowVM : Window
     {
         ExceptionHelperUtility.CallExceptionHelperFromThisClassAndCallback(this,() => 
         {
-            namedStreamWState = new DefaultStreamWState<DataForMainWindowVM,EnumDataForMainWindowVM>(new DataForMainWindowVM(true));
+            namedStreamWState = FactoryObjectUtility.GetNamedStreamWStateWhereDataWMainWindowVM();
             Init();
             Build();
         });
